@@ -4,604 +4,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Алексей Петров - Портфолио</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --bg: #f8fafc;
-            --white: #ffffff;
-            --shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-            --radius: 12px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .header__title {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .header__subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        .nav {
-            background: var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow);
-        }
-
-        .nav__list {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 1rem 0;
-            gap: 2rem;
-        }
-
-        .nav__link {
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav__link:hover,
-        .nav__link:focus {
-            background: rgba(255,255,255,0.2);
-            outline: none;
-        }
-
-        .nav__link[aria-current="page"] {
-            background: rgba(255,255,255,0.3);
-            font-weight: 600;
-        }
-
-        /* Main Content */
-        .main {
-            padding: 4rem 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 4rem;
-        }
-
-        .hero__photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary);
-            display: block;
-            margin: 0 auto;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-
-        .hero__greeting {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .hero__description {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-
-        .button:hover,
-        .button:focus {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            outline: none;
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        /* Skills */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--text);
-        }
-
-        .skills__grid {
-            display: grid;
-            gap: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-        }
-
-        .skill {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .skill__header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .skill__progress {
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill__progress-bar {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Projects */
-        .projects__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-        }
-
-        .project-card__image {
-            height: 200px;
-            overflow: hidden;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .project-card__content {
-            padding: 1.5rem;
-        }
-
-        .project-card__title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-        }
-
-        .project-card__description {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .project-card__tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: var(--white);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .footer__content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer__links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .footer__link {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer__link:hover,
-        .footer__link:focus {
-            color: var(--white);
-            outline: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header__title { font-size: 2rem; }
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero__photo { width: 150px; height: 150px; }
-            .nav__list { flex-direction: column; gap: 0.5rem; }
-            .projects__grid { grid-template-columns: 1fr; }
-            .footer__content { flex-direction: column; }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 0 15px; }
-            .hero { padding: 2rem; }
-            .contact-form { padding: 2rem; }
-            .section-title { font-size: 2rem; }
-        }
-
-        /* Accessibility */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Focus styles */
-        button:focus,
-        a:focus {
-            outline: 3px solid var(--primary);
-            outline-offset: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="page">
-        <!-- Header -->
         <header class="header" role="banner">
             <div class="container">
-                <h1 class="header__title">Брусилов Иван</h1>
+                <h1 class="header__title">Алексей Петров</h1>
                 <p class="header__subtitle">Студент-разработчик</p>
             </div>
         </header>
 
-        <!-- Navigation -->
         <nav class="nav" aria-label="Основная навигация">
             <div class="container">
                 <ul class="nav__list" role="menubar">
-                    <li role="none">
-                        <a href="#home" class="nav__link" role="menuitem" aria-current="page">Главная</a>
-                    </li>
-                    <li role="none">
-                        <a href="#projects" class="nav__link" role="menuitem">Проекты</a>
-                    </li>
-                    <li role="none">
-                        <a href="#contacts" class="nav__link" role="menuitem">Контакты</a>
-                    </li>
+                    <li><a href="#home" class="nav__link" aria-current="page">Главная</a></li>
+                    <li><a href="#projects" class="nav__link">Проекты</a></li>
+                    <li><a href="#diary" class="nav__link">Дневник</a></li>
+                    <li><a href="#contacts" class="nav__link">Контакты</a></li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Main Content -->
         <main class="main" id="home" role="main">
             <div class="container">
-                <!-- Hero Section -->
                 <section class="hero" aria-labelledby="hero-title">
                     <div class="hero__image">
-                        <div class="hero__photo">👨‍💻</div>
+                        <div class="avatar">👨‍💻</div>
                     </div>
                     <div class="hero__info">
-                        <h2 id="hero-title" class="hero__greeting">Привет! Я студент</h2>
+                        <h2 id="hero-title" class="hero__greeting">Привет! Я Алексей</h2>
                         <p class="hero__description">
-                            Факультет информационных технологий, группа ЭФБО 11 24<br>
-                            Увлекаюсь веб-разработкой и созданием современных интерфейсов
+                            Студент факультета информационных технологий, группа ИТ-21-1.<br>
+                            Увлекаюсь веб-разработкой и созданием современных интерфейсов.
                         </p>
-                        <button class="button" onclick="downloadResume()" aria-label="Скачать резюме в формате PDF">
-                            Скачать резюме
+                        <button class="button button--primary" onclick="downloadResume()">
+                            📄 Скачать резюме
                         </button>
                     </div>
                 </section>
 
-                <!-- Skills Section -->
                 <section class="skills" aria-labelledby="skills-title">
                     <h2 id="skills-title" class="section-title">Мои навыки</h2>
                     <div class="skills__grid">
                         <div class="skill" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                             <div class="skill__header">
-                                <span class="skill__name">HTML/CSS</span>
-                                <span class="skill__percent">90%</span>
+                                <span>HTML/CSS</span>
+                                <span>90%</span>
                             </div>
-                            <div class="skill__progress">
-                                <div class="skill__progress-bar" style="width: 90%"></div>
-                            </div>
+                            <div class="skill__progress"><div style="width: 90%"></div></div>
                         </div>
                         <div class="skill" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                             <div class="skill__header">
-                                <span class="skill__name">JavaScript</span>
-                                <span class="skill__percent">80%</span>
+                                <span>JavaScript</span>
+                                <span>80%</span>
                             </div>
-                            <div class="skill__progress">
-                                <div class="skill__progress-bar" style="width: 80%"></div>
-                            </div>
+                            <div class="skill__progress"><div style="width: 80%"></div></div>
                         </div>
                         <div class="skill" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                             <div class="skill__header">
-                                <span class="skill__name">Bootstrap</span>
-                                <span class="skill__percent">85%</span>
+                                <span>React</span>
+                                <span>75%</span>
                             </div>
-                            <div class="skill__progress">
-                                <div class="skill__progress-bar" style="width: 85%"></div>
-                            </div>
+                            <div class="skill__progress"><div style="width: 75%"></div></div>
                         </div>
-                        <div class="skill" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                        <div class="skill" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                             <div class="skill__header">
-                                <span class="skill__name">React</span>
-                                <span class="skill__percent">60%</span>
+                                <span>Node.js</span>
+                                <span>70%</span>
                             </div>
-                            <div class="skill__progress">
-                                <div class="skill__progress-bar" style="width: 60%"></div>
-                            </div>
+                            <div class="skill__progress"><div style="width: 70%"></div></div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Projects Section -->
                 <section id="projects" class="projects" aria-labelledby="projects-title">
-                    <h2 id="projects-title" class="section-title">Лучшие проекты</h2>
+                    <h2 id="projects-title" class="section-title">Мои проекты</h2>
                     <div class="projects__grid">
                         <article class="project-card">
-                            <div class="project-card__image">
-                                💼
-                            </div>
+                            <div class="project-card__image">💼</div>
                             <div class="project-card__content">
-                                <h3 class="project-card__title">Личный сайт</h3>
-                                <p class="project-card__description">
-                                    Адаптивный сайт-портфолио на HTML и CSS
-                                </p>
+                                <h3>Портфолио сайт</h3>
+                                <p>Адаптивный сайт-портфолио с современным дизайном</p>
                                 <div class="project-card__tags">
-                                    <span class="tag">HTML</span>
-                                    <span class="tag">CSS</span>
-                                    <span class="tag">JavaScript</span>
+                                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
                                 </div>
+                                <button class="button button--outline" onclick="showProjectDetails(1)">
+                                    Подробнее
+                                </button>
                             </div>
                         </article>
                         <article class="project-card">
-                            <div class="project-card__image">
-                                ✅
-                            </div>
+                            <div class="project-card__image">✅</div>
                             <div class="project-card__content">
-                                <h3 class="project-card__title">Todo приложение</h3>
-                                <p class="project-card__description">
-                                    Приложение для управления задачами
-                                </p>
+                                <h3>Todo приложение</h3>
+                                <p>Приложение для управления задачами с локальным хранилищем</p>
                                 <div class="project-card__tags">
-                                    <span class="tag">JavaScript</span>
-                                    <span class="tag">LocalStorage</span>
+                                    <span>JavaScript</span><span>LocalStorage</span>
                                 </div>
+                                <button class="button button--outline" onclick="showProjectDetails(2)">
+                                    Подробнее
+                                </button>
                             </div>
                         </article>
                         <article class="project-card">
-                            <div class="project-card__image">
-                                🛒
-                            </div>
+                            <div class="project-card__image">🛒</div>
                             <div class="project-card__content">
-                                <h3 class="project-card__title">Интернет-магазин</h3>
-                                <p class="project-card__description">
-                                    Прототип магазина с корзиной товаров
-                                </p>
+                                <h3>Интернет-магазин</h3>
+                                <p>Прототип магазина с корзиной и фильтрацией товаров</p>
                                 <div class="project-card__tags">
-                                    <span class="tag">React</span>
-                                    <span class="tag">API</span>
+                                    <span>React</span><span>API</span><span>CSS</span>
                                 </div>
+                                <button class="button button--outline" onclick="showProjectDetails(3)">
+                                    Подробнее
+                                </button>
                             </div>
                         </article>
                     </div>
                 </section>
 
-                <!-- Contact Form -->
+                <section id="diary" class="diary" aria-labelledby="diary-title">
+                    <h2 id="diary-title" class="section-title">Дневник разработки</h2>
+                    <div class="timeline">
+                        <div class="timeline__item">
+                            <div class="timeline__date">15.01.2024</div>
+                            <div class="timeline__content">
+                                <h3>Завершил работу над портфолио</h3>
+                                <p>Реализовал адаптивный дизайн и доступность. Добавил анимации прогресс-баров.</p>
+                                <span class="status status--completed">Завершено</span>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__date">10.01.2024</div>
+                            <div class="timeline__content">
+                                <h3>Работа над Todo приложением</h3>
+                                <p>Добавил функции добавления, удаления и фильтрации задач.</p>
+                                <span class="status status--completed">Завершено</span>
+                            </div>
+                        </div>
+                        <div class="timeline__item">
+                            <div class="timeline__date">05.01.2024</div>
+                            <div class="timeline__content">
+                                <h3>Изучение React</h3>
+                                <p>Освоил основы React, компоненты и управление состоянием.</p>
+                                <span class="status status--in-progress">В процессе</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="contacts" class="contacts" aria-labelledby="contacts-title">
                     <h2 id="contacts-title" class="section-title">Контакты</h2>
-                    <form class="contact-form" aria-labelledby="contacts-title">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Имя</label>
-                            <input type="text" id="name" class="form-input" required aria-required="true">
+                    <div class="contacts__content">
+                        <form class="contact-form" aria-labelledby="contacts-title">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Имя *</label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Сообщение *</label>
+                                <textarea id="message" class="form-textarea" required></textarea>
+                            </div>
+                            <button type="submit" class="button button--primary">Отправить сообщение</button>
+                        </form>
+                        <div class="contact-info">
+                            <h3>Контактная информация</h3>
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>student@edu.ru</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📱</span>
+                                <div>
+                                    <strong>Телефон</strong>
+                                    <p>+7 (999) 123-45-67</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">💼</span>
+                                <div>
+                                    <strong>GitHub</strong>
+                                    <p>https://github.com/bxrechka32/</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" class="form-input" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Сообщение</label>
-                            <textarea id="message" class="form-textarea" required aria-required="true"></textarea>
-                        </div>
-                        <button type="submit" class="button">Отправить сообщение</button>
-                    </form>
+                    </div>
                 </section>
             </div>
         </main>
 
-        <!-- Footer -->
         <footer class="footer" role="contentinfo">
             <div class="container">
-                <div class="footer__content">
-                    <p class="footer__copyright">&copy; 2025 StudentDev Portfolio</p>
-                    <div class="footer__links">
-                        <a href="mailto:student@edu.ru" class="footer__link">student@edu.ru</a>
-                        <a href="https://github.com" class="footer__link">GitHub</a>
-                    </div>
-                </div>
+                <p>&copy; 2024 Алексей Петров. Все права защищены.</p>
             </div>
         </footer>
     </div>
 
-    <script>
-        function downloadResume() {
-            const link = document.createElement('a');
-            link.href = 'Страница1_merged.pdf';
-            link.download = 'Резюме_Алексей_Петров.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+    <div id="projectModal" class="modal">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <div class="modal__tabs">
+                <button class="tab-button active" onclick="openTab('description')">Описание</button>
+                <button class="tab-button" onclick="openTab('code')">Исходный код</button>
+            </div>
+            <div id="description" class="tab-content active">
+                <p id="modalDescription"></p>
+            </div>
+            <div id="code" class="tab-content">
+                <pre><code id="modalCode"></code></pre>
+            </div>
+        </div>
+    </div>
 
-        document.querySelectorAll('.nav__link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Сообщение отправлено!');
-            e.target.reset();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.activeElement.blur();
-            }
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skill = entry.target;
-                    const progressBar = skill.querySelector('.skill__progress-bar');
-                    const width = progressBar.style.width;
-                    progressBar.style.width = '0%';
-                    setTimeout(() => {
-                        progressBar.style.width = width;
-                    }, 100);
-                }
-            });
-        });
-
-        document.querySelectorAll('.skill').forEach(skill => {
-            observer.observe(skill);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
