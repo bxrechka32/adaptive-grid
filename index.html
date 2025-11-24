@@ -117,6 +117,7 @@
             border: 4px solid var(--primary);
             display: block;
             margin: 0 auto;
+            background: linear-gradient(45deg, #667eea, #764ba2);
         }
 
         .hero__greeting {
@@ -220,17 +221,12 @@
         .project-card__image {
             height: 200px;
             overflow: hidden;
-        }
-
-        .project-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-card__image img {
-            transform: scale(1.05);
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
         }
 
         .project-card__content {
@@ -410,9 +406,7 @@
                 <!-- Hero Section -->
                 <section class="hero" aria-labelledby="hero-title">
                     <div class="hero__image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" 
-                             alt="Портрет Алексея Петрова" 
-                             class="hero__photo">
+                        <div class="hero__photo">👨‍💻</div>
                     </div>
                     <div class="hero__info">
                         <h2 id="hero-title" class="hero__greeting">Привет! Я студент</h2>
@@ -475,8 +469,7 @@
                     <div class="projects__grid">
                         <article class="project-card">
                             <div class="project-card__image">
-                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop" 
-                                     alt="Скриншот личного сайта портфолио с кодом на экране">
+                                💼
                             </div>
                             <div class="project-card__content">
                                 <h3 class="project-card__title">Личный сайт</h3>
@@ -492,8 +485,7 @@
                         </article>
                         <article class="project-card">
                             <div class="project-card__image">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop" 
-                                     alt="Интерфейс приложения для управления задачами с списком дел">
+                                ✅
                             </div>
                             <div class="project-card__content">
                                 <h3 class="project-card__title">Todo приложение</h3>
@@ -508,8 +500,7 @@
                         </article>
                         <article class="project-card">
                             <div class="project-card__image">
-                                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop" 
-                                     alt="Главная страница интернет-магазина с товарами">
+                                🛒
                             </div>
                             <div class="project-card__content">
                                 <h3 class="project-card__title">Интернет-магазин</h3>
@@ -563,7 +554,6 @@
 
     <script>
         function downloadResume() {
-            // Создаем временную ссылку для скачивания PDF
             const link = document.createElement('a');
             link.href = 'Страница1_merged.pdf';
             link.download = 'Резюме_Алексей_Петров.pdf';
@@ -572,7 +562,6 @@
             document.body.removeChild(link);
         }
 
-        // Плавная прокрутка для навигации
         document.querySelectorAll('.nav__link').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -584,21 +573,18 @@
             });
         });
 
-        // Обработка формы
         document.querySelector('.contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Сообщение отправлено!');
             e.target.reset();
         });
 
-        // Добавляем поддержку клавиатуры для навигации
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 document.activeElement.blur();
             }
         });
 
-        // Анимация прогресс-баров при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
